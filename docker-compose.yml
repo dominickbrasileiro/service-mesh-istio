@@ -1,0 +1,10 @@
+version: '3'
+services:
+  serviceA:
+    image: dominickbrasileiro/service-a
+    build:
+      context: ./serviceA
+  serviceB:
+    image: dominickbrasileiro/service-b
+    build:
+      context: ./serviceB

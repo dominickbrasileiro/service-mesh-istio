@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-a
+spec:
+  selector:
+    matchLabels:
+      app: service-test
+  template:
+    metadata:
+      labels:
+        app: service-test
+        version: A
+    spec:
+      containers:
+        - name: service-a
+          image: dominickbrasileiro/service-a
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-b
+spec:
+  selector:
+    matchLabels:
+      app: service-test
+  template:
+    metadata:
+      labels:
+        app: service-test
+        version: B
+    spec:
+      containers:
+        - name: service-b
+          image: dominickbrasileiro/service-b
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
